@@ -105,15 +105,24 @@
         }else{alert ("vise srece drugi put")}
     }
         var sova =0
-        function myFunction2(){
+        function sleep(ms){
+            return new Promise(
+                resolve=> setTimeout(resolve, ms)
+            );
+                
+            
+        }
+       async function myFunction2(){
             if (sova<3){
-                alert("ne diraj me")
+                var pokusaji =3-sova
+                alert("ne diraj me! Takni me još "+pokusaji+" puta pa ćeš vidit što slijedi")
                 sova=sova+1
             }else{
                 document.getElementById('sovica').src='img/angry.png'
-                alert("LIJEPO SAM TI REKAO DA ME NE DIRAŠ!!!")
+                alert("LIJEPO SAM TI REKAO DA ME NE DIRAŠ!!! SAD ĆE MI TREBATI 5 SEKUNDI DA PONOVNO ZASPEM")
+                await sleep(5000);
                 sova=0
-                
+                document.getElementById('sovica').src='img/sleepy.png'
             }
             
         }
