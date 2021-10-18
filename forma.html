@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Form</title>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("user_zcPbId2HwN77AwNK0oP6Q");
+      })();
+    </script>
+    <script>
+      function posalji() {
+        let Ime = document.getElementById("name").value;
+        let mailKorisnika = document.getElementById("email").value;
+        let poruka = document.getElementById("message").value;
+        var parametri = {
+          from_name: Ime,
+          from_email: mailKorisnika,
+          message: poruka,
+        };
+        emailjs
+          .send("service_tbfwnli", "template_yoo7z12", parametri)
+          .then(function (res) {});
+      }
+    </script>
+  </head>
+  <body>
+    <label>Name</label>
+    <input type="text" name="name" id="name" />
+    <label>Email</label>
+    <input type="email" name="email" id="email" />
+    <label>Message</label>
+    <textarea name="message" id="message"></textarea>
+    <button type="button" value="Send" onclick="posalji">posalji</button>
+  </body>
+</html>
